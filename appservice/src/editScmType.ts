@@ -36,11 +36,11 @@ async function showScmPrompt(currentScmType: string): Promise<string> {
     const scmQuickPicks: vscode.QuickPickItem[] = [];
     // generate quickPicks to not include current type
     for (const scmQuickPick of Object.keys(ScmType)) {
-        if (scmQuickPick === currentScmType) {
+        if (ScmType[scmQuickPick] === currentScmType) {
             // put the current source at the top of the list
-            scmQuickPicks.unshift({ label: scmQuickPick, description: currentSource });
+            scmQuickPicks.unshift({ label: ScmType[scmQuickPick], description: currentSource });
         } else {
-            scmQuickPicks.push({ label: scmQuickPick, description: '' });
+            scmQuickPicks.push({ label: ScmType[scmQuickPick], description: '' });
         }
     }
 
