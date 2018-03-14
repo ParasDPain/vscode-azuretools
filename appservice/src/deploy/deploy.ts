@@ -50,6 +50,7 @@ export async function deploy(client: SiteClient, fsPath: string, outputChannel: 
         default: //'None' or any other non-supported scmType
         case ScmType.RunFromZip:
             await deployRunFromZip(client, fsPath, outputChannel, configurationSectionName, telemetryProperties);
+            break;
             await deployZip(client, fsPath, outputChannel, configurationSectionName, confirmDeployment, telemetryProperties);
             break;
     }
