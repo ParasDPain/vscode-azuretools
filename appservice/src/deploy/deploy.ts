@@ -47,10 +47,10 @@ export async function deploy(client: SiteClient, fsPath: string, outputChannel: 
             break;
         case ScmType.GitHub:
             throw new Error(localize('gitHubConnected', '"{0}" is connected to a GitHub repository. Push to GitHub repository to deploy.', client.fullName));
-        default: //'None' or any other non-supported scmType
         case ScmType.RunFromZip:
-            await deployRunFromZip(client, fsPath, outputChannel, configurationSectionName, telemetryProperties);
+            await deployRunFromZip(client, fsPath, outputChannel, telemetryProperties);
             break;
+        default: //'None' or any other non-supported scmType
             await deployZip(client, fsPath, outputChannel, configurationSectionName, confirmDeployment, telemetryProperties);
             break;
     }
