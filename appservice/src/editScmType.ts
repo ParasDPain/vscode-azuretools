@@ -38,8 +38,10 @@ async function showScmPrompt(currentScmType: string): Promise<string> {
     for (const scmQuickPick of Object.keys(ScmType)) {
         if (ScmType[scmQuickPick] === currentScmType) {
             // put the current source at the top of the list
+            // tslint:disable-next-line:no-unsafe-any
             scmQuickPicks.unshift({ label: ScmType[scmQuickPick], description: currentSource });
         } else {
+            // tslint:disable-next-line:no-unsafe-any
             scmQuickPicks.push({ label: ScmType[scmQuickPick], description: '' });
         }
     }
