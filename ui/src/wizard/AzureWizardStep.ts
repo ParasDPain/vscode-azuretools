@@ -3,9 +3,10 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { QuickPickItem } from "vscode";
+import { OutputChannel } from 'vscode';
+import { IAzureUserInput } from '../../index';
 
-export interface IQuickPickItemWithData<T> extends QuickPickItem {
-    persistenceId?: string; // A unique key to identify this item items across sessions, used in persisting previous selections
-    data?: T;
+export abstract class AzureWizardStep<T> {
+    public abstract prompt(wizardContext: T, ui: IAzureUserInput): Promise<T>;
+    public abstract execute(wizardContext: T, outputChannel: OutputChannel): Promise<T>;
 }

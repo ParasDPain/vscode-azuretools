@@ -3,11 +3,10 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { MessageItem } from 'vscode';
-import { localize } from './localize';
+import * as crypto from "crypto";
 
-export namespace DialogResponses {
-    export const yes: MessageItem = { title: localize('Yes', 'Yes') };
-    export const no: MessageItem = { title: localize('No', 'No') };
-    export const cancel: MessageItem = { title: localize('Cancel', 'Cancel'), isCloseAffordance: true };
+export namespace randomUtils {
+    export function getPseudononymousStringHash(s: string): string {
+        return crypto.createHash('sha256').update(s).digest('base64');
+    }
 }
